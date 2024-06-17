@@ -34,25 +34,38 @@ def create_toc_and_add_ids(input_html_path, output_html_path, toc_html_path):
 
     soup = BeautifulSoup(protected_html, 'html.parser')
     toc_list_items = []
+    id_set = set()  # To track unique IDs
 
     # Process both h3 and h4 headers
     for header in soup.find_all(['h3', 'h4']):
-        heading_text = header.get_text()
+        heading_text = header.get_text(strip=True)
+        # Check if the heading starts with a number followed by a period
+        match = re.match(r'^(\d+)\.\s*(.*)', heading_text)
+        if match:
+            _, heading_text = match.groups()  # Ignore the number, get the heading text
         # Create a valid id from the heading text
-        heading_id = re.sub(r'[^a-zA-Z0-9_]', '_', heading_text.lower())
-        heading_id = re.sub(r'^[0-9_]+', '', heading_id)  # Remove leading digits and underscores
+        heading_id = re.sub(r'[^a-zA-Z0-9]+', '_', heading_text.lower()).strip('_')
+        
+        # Ensure the ID is unique within the document
+        original_id = heading_id
+        counter = 1
+        while heading_id in id_set:
+            heading_id = f"{original_id}_{counter}"
+            counter += 1
+        id_set.add(heading_id)
+
         header['id'] = heading_id
-        toc_list_items.append(f'<li><a href="#{heading_id}"> {heading_text}</a></li>')
+        toc_list_items.append(f'<li><a href="#{heading_id}">{heading_text}</a></li>')
 
     # Create the Table of Contents
-    toc_html = """
+    toc_html = f"""
     <div class="toc">
-        <h4>Table of Contents</h4>
+        <h3>Table of Contents</h3>
         <ul>
-            {}
+            {"".join(toc_list_items)}
         </ul>
     </div>
-    """.format('\n'.join(toc_list_items))
+    """
 
     # Restore Jinja syntax
     modified_html = str(soup)
