@@ -1,0 +1,1 @@
+app.include_router({table_name}.router, prefix="/{table_name}", tags=["{table_name}"])

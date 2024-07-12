@@ -1,0 +1,36 @@
+{
+    "differences": [
+      {
+        "clause": "1.1.1",
+        "description": "Document 1 requires Confidential Information to be marked 'confidential' or similar, while Document 2 does not have this requirement.",
+        "legal_implication": "The scope of what constitutes Confidential Information may be narrower in Document 1, as it is limited to information expressly marked confidential. This could disadvantage the party disclosing information that they intend to be confidential but forget to mark as such.",
+        "favour": "Favours the recipient of Confidential Information in Document 1"
+      },
+      {
+        "clause": "3.1.2", 
+        "description": "Document 1 prohibits disclosure 'directly or indirectly' while Document 2 has no such qualification.",
+        "legal_implication": "The restriction on disclosure in Document 1 is broader as it captures indirect disclosures. This affords more protection to the disclosing party.",
+        "favour": "Favours the discloser of Confidential Information in Document 1"
+      },
+      {
+        "clause": "3.3",
+        "description": "The duration of confidentiality obligations is 12 months in Document 1 but unstated in Document 2.",
+        "legal_implication": "The obligations in Document 1 automatically expire after 12 months, while they may continue indefinitely in Document 2. This favors the recipient as their liability is time-limited.",
+        "favour": "Favours the recipient of Confidential Information in Document 1"
+      },
+      {
+        "clause": "Governing Law",
+        "description": "Document 1 is governed by English law while Document 2 has no governing law clause.",
+        "legal_implication": "Disputes under Document 1 will be resolved under English law while it is unclear what law would apply to Document 2. Having certainty on governing law favors both parties.",
+        "favour": "Favours both parties in Document 1"
+      },
+      {
+        "clause": "Dispute Resolution", 
+        "description": "Document 1 requires disputes to be litigated in English courts while Document 2 is silent on dispute resolution.",
+        "legal_implication": "Parties have clarity on where disputes will be resolved under Document 1 but not under Document 2. Exclusive jurisdiction clauses provide certainty but may disadvantage a party if the chosen forum is inconvenient for them.",
+        "favour": "Favours the party closest to England in Document 1 (unless both are foreign, in which case it is neutral)"
+      }
+    ],
+    "similarity_score": 0.7,
+    "accuracy_score": 0.9
+  }
